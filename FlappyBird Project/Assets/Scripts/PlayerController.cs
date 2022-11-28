@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,8 +19,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody>();
-        jumpForce = 40;
-        gravityForce = 2;
+        jumpForce = 6.5f;
+        gravityForce = 1.19f;
         Physics.gravity *= gravityForce;
         delay = false;
     }
@@ -29,10 +30,16 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (!delay) {
-                direction = Vector3.up * jumpForce;
-                direction += Time.deltaTime * Physics.gravity;
-                transform.position += direction;
+                //direction = Vector3.up * jumpForce;
+                //direction += Time.deltaTime * Physics.gravity;
+                //transform.position += direction;
+                //if (RB.velocity.y < 0)
+                //{
+                //    RB.AddForce(Vector3.up * jumpForce * RB.velocity.y * -1, ForceMode.VelocityChange);
+                //}
+
                 //RB.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+                RB.velocity = Vector3.up * jumpForce;
                 StartCoroutine(MovementControl());
             }
 
@@ -49,7 +56,7 @@ public class PlayerController : MonoBehaviour
         
 
             delay = true;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             delay = false;
         
     }
