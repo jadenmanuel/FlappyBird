@@ -15,4 +15,11 @@ public class BoundaryCollider : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Over!");
+        
+        Time.timeScale = 0;
+    }
 }
