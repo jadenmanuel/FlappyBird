@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
 
     public Vector3 spawnPos;
     private float startDelay = 1;
-    private float repeatRateObstacle = 13;
+    private float repeatRateObstacle = 11;
     private float repeatRateTree = 2;
     private int[] obstacles = new int[10];
     public List<GameObject> trees = new List<GameObject>();
@@ -27,11 +27,12 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+  
     void SpawnObstacle()
     {
 
-        float z = -15.08f;
-        for (int i = 0; i < 5; i++)
+        float z = 15f;
+        for (int i = 0; i < 4; i++)
         {
             float y = -1.666f + Random.Range(-3f, 3f);
 
