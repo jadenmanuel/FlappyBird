@@ -18,8 +18,13 @@ public class BoundaryCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Over!");
+
+        if (other.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("Over!");
+
+            Time.timeScale = 0;
+        }
         
-        Time.timeScale = 0;
     }
 }

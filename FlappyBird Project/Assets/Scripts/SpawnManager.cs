@@ -27,12 +27,12 @@ public class SpawnManager : MonoBehaviour
     void SpawnObstacle()
     {
 
-        float z = -9.47113f;
+        float z = -15.08f;
         for (int i = 0; i < 5; i++)
         {
-            float y = 3.77916f + Random.Range(-3f, 3f);
+            float y = -1.666f + Random.Range(-3f, 3f);
 
-            Vector3 spawnPos = new Vector3(13.42038f, y, (z + 7 * i));
+            Vector3 spawnPos = new Vector3(2.753f, y, (z + 7 * i));
             Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
         }
 
