@@ -39,7 +39,7 @@ public class BoundaryCollider : MonoBehaviour
 
             Time.timeScale = 0;
         }
-        if (other.gameObject.tag == "pointObj")
+        if (other.gameObject.tag == "PointChecker")
         {
             scoreNum += 1;
             updateScore();
