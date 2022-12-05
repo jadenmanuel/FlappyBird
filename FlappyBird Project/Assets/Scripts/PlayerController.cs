@@ -15,6 +15,17 @@ public class PlayerController : MonoBehaviour
     public float gravityForce;
     private Vector3 direction;
     private Boolean delay;
+
+    public void StartGame()
+    {
+        
+       /* RB = GetComponent<Rigidbody>();
+
+        jumpForce = 6.5f;
+        gravityForce = 1.19f;
+        Physics.gravity *= gravityForce;
+        delay = false;*/
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -9,16 +9,21 @@ public class SpawnManager : MonoBehaviour
 
     public Vector3 spawnPos;
     private float startDelay = 1;
-    private float repeatRateObstacle = 11;
+    private float repeatRateObstacle = 7;
     private float repeatRateTree = 2;
     private int[] obstacles = new int[10];
     public List<GameObject> trees = new List<GameObject>();
 
+    public void StartGame()
+    {
+        //InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
+        //InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
+    }
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
-        InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
+       InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
     }
 
     // Update is called once per frame
