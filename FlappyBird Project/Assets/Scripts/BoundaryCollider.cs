@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoundaryCollider : MonoBehaviour
 {
     public TextMeshProUGUI gameOverText;
+    public Button restartButton;
     public TextMeshProUGUI score;
     private int scoreNum;
 
@@ -34,6 +36,7 @@ public class BoundaryCollider : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             gameOverText.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
 
             Debug.Log("Over!");
 
