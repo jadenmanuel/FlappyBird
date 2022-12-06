@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Boolean delay;
 
     public int speed = 5;
+   
 
     public void StartGame(int addedSpeed)
     {
@@ -42,13 +43,16 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityForce;
         delay = false;
         playerAudio = GetComponent<AudioSource>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+
+       
         if (Input.GetKeyDown(KeyCode.Space)) {
-            if (!delay) {
+            if (!delay && transform.position.y < 13) {
                 //direction = Vector3.up * jumpForce;
                 //direction += Time.deltaTime * Physics.gravity;
                 //transform.position += direction;
@@ -58,6 +62,8 @@ public class PlayerController : MonoBehaviour
                 //}
 
                 //RB.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+
+                
                 RB.velocity = Vector3.up * jumpForce;
                 StartCoroutine(MovementControl());
                 playerAudio.PlayOneShot(jumpSound, 1.0f);

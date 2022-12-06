@@ -13,12 +13,13 @@ public class SpawnManager : MonoBehaviour
     private float repeatRateTree = 2;
     private int[] obstacles = new int[10];
     public List<GameObject> trees = new List<GameObject>();
-    
+    public List<GameObject> powerups = new List<GameObject>();
+
     public void StartGame()
     {
 
 
-        
+
         Debug.Log(bird.speed);
         switch (bird.speed)
         {
@@ -41,17 +42,22 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
-       //InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
+        //InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
         bird = GameObject.Find("FlappyBird3D").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-  
+    void SpawnPowerup(Vector3 pos)
+    {
+        Debug.Log("Powerup spawned");
+        int randomIndex = Random.Range(0, powerups.Count);
+        Instantiate(powerups[randomIndex], pos, powerups[randomIndex].transform.rotation);
+    }
     void SpawnObstacle()
     {
 
@@ -61,6 +67,15 @@ public class SpawnManager : MonoBehaviour
             float y = -1.666f + Random.Range(-3f, 3f);
 
             Vector3 spawnPos = new Vector3(2.753f, y, (z + 14 * i));
+
+            //Let's see if we will spawn in a powerup
+            int randomNum = Random.Range(0, 5);
+            if (randomNum <= 3)
+            {
+                Vector3 powerupPos = new Vector3(0, -1.666f + Random.Range(-2f, 2f), (spawnPos.z + 10));
+                SpawnPowerup(powerupPos);
+
+            }
             Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
         }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
 
-    
+
     public PlayerController bird;
     private float treeSpeed = 10.0f;
     public int speed;
@@ -13,19 +13,19 @@ public class MoveForward : MonoBehaviour
     void Start()
     {
         bird = GameObject.Find("FlappyBird3D").GetComponent<PlayerController>();
-     
+
     }
 
-   // public void StartGame(int addedSpeed)
-   // {
-   //     speed += addedSpeed;
-   // }
+    // public void StartGame(int addedSpeed)
+    // {
+    //     speed += addedSpeed;
+    // }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (tag == "Obstacle")
+        if (tag == "Obstacle" || tag == "Powerup")
         {
             transform.Translate(Vector3.back * Time.deltaTime * bird.speed);
         }
