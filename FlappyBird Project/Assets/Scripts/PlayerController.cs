@@ -16,8 +16,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 direction;
     private Boolean delay;
 
-    public void StartGame()
+    public int speed = 5;
+
+    public void StartGame(int addedSpeed)
     {
+        speed += addedSpeed * 2;
+
         
        /* RB = GetComponent<Rigidbody>();
 

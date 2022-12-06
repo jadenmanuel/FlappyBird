@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6283015964891284483}
   m_Layer: 0
   m_Name: tree3
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e31b8b07d5419b47b9c0582a73166e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bird: {fileID: 0}
+  speed: 0
 --- !u!114 &159027309443420850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e31b8b07d5419b47b9c0582a73166e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bird: {fileID: 0}
+  speed: 0
 --- !u!65 &6283015964891284483
 BoxCollider:
   m_ObjectHideFlags: 0

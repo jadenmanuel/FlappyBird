@@ -6,30 +6,49 @@ public class SpawnManager : MonoBehaviour
 {
 
     public GameObject obstaclePrefab;
-
+    public PlayerController bird;
     public Vector3 spawnPos;
     private float startDelay = 1;
     private float repeatRateObstacle = 11;
     private float repeatRateTree = 2;
     private int[] obstacles = new int[10];
     public List<GameObject> trees = new List<GameObject>();
-
+    
     public void StartGame()
     {
+
+
+        
+        Debug.Log(bird.speed);
+        switch (bird.speed)
+        {
+            case 7:
+                repeatRateObstacle = 8;
+                break;
+
+            case 9:
+                repeatRateObstacle = 6;
+                break;
+        }
+
+        InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
+        InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
+
         //InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
         //InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
     }
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
-       InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
+        //InvokeRepeating("SpawnObstacle", startDelay, repeatRateObstacle);
+       //InvokeRepeating("SpawnTrees", startDelay, repeatRateTree);
+        bird = GameObject.Find("FlappyBird3D").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
   

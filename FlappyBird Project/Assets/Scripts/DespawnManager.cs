@@ -18,7 +18,6 @@ public class DespawnManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("h");
         Destroy(other.gameObject);
 
     }
