@@ -7,6 +7,9 @@ using UnityEngine.XR;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody RB;
+    public AudioClip jumpSound;
+    private AudioSource playerAudio;
+
     //SerializeField]
     [Range(1, 50)]
     public float jumpForce;
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
         gravityForce = 1.19f;
         Physics.gravity *= gravityForce;
         delay = false;
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class PlayerController : MonoBehaviour
                 //RB.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 RB.velocity = Vector3.up * jumpForce;
                 StartCoroutine(MovementControl());
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
             }
 
         }

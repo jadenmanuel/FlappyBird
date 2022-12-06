@@ -9,6 +9,9 @@ public class BoundaryCollider : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
     public TextMeshProUGUI score;
+    public AudioClip crashSound;
+    private AudioSource playerAudio;
+
     private int scoreNum;
 
 
@@ -17,6 +20,8 @@ public class BoundaryCollider : MonoBehaviour
     {
         scoreNum = 0;
         updateScore();
+        playerAudio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -37,6 +42,8 @@ public class BoundaryCollider : MonoBehaviour
         {
             gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
+            playerAudio.PlayOneShot(crashSound, 1.0f);
+
 
             Debug.Log("Over!");
 
