@@ -58,7 +58,6 @@ public class LevelButton : MonoBehaviour
         {
 
             case "Easy":
-                //Invoke("StartGame(Level.Easy)", 2);
                 StartGame(Level.Easy);
                 break;
 

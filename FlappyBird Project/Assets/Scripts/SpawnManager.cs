@@ -58,18 +58,28 @@ public class SpawnManager : MonoBehaviour
         int randomIndex = Random.Range(0, powerups.Count);
         Instantiate(powerups[randomIndex], pos, powerups[randomIndex].transform.rotation);
     }
-    void SpawnObstacle()
+
+    Vector3 generateObstacleCoords(int i)
     {
 
         float z = 15f;
+        float y = -1.666f + Random.Range(-3f, 3f);
+
+        Vector3 spawnPos = new Vector3(2.753f, y, (z + 14 * i));
+        return spawnPos;
+    }
+    void SpawnObstacle()
+    {
+
+        //float z = 15f;
         for (int i = 0; i < 4; i++)
         {
-            float y = -1.666f + Random.Range(-3f, 3f);
+            //float y = -1.666f + Random.Range(-3f, 3f);
 
-            Vector3 spawnPos = new Vector3(2.753f, y, (z + 14 * i));
+            Vector3 spawnPos = generateObstacleCoords(i);
 
             //Let's see if we will spawn in a powerup
-            int randomNum = Random.Range(0, 5);
+            int randomNum = Random.Range(0, 10);
             if (randomNum <= 3)
             {
                 Vector3 powerupPos = new Vector3(0, -1.666f + Random.Range(-2f, 2f), (spawnPos.z + 10));
@@ -81,6 +91,19 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+
+    Vector3 generateTreeCoords()
+    {
+        float x = Random.Range(8.0f, 25.0f);
+        if (Random.Range(0, 2) == 0)
+        {
+            x *= -1;
+        }
+        float y = -8.4f;
+        float z = 100.0f;
+
+        return new Vector3(x, y, z);
+    }
     void SpawnTrees()
     {
 
@@ -89,15 +112,15 @@ public class SpawnManager : MonoBehaviour
             int treeIndex = Random.Range(0, trees.Count);
 
             //[-25, -8] or [8, 25]
-            float x = Random.Range(8.0f, 25.0f);
-            if (Random.Range(0, 2) == 0)
-            {
-                x *= -1;
-            }
-            float y = -8.4f;
-            float z = 100.0f;
+            //float x = Random.Range(8.0f, 25.0f);
+            //if (Random.Range(0, 2) == 0)
+            //{
+                //x *= -1;
+           // }
+            //float y = -8.4f;
+            //float z = 100.0f;
 
-            Vector3 spawnPos = new Vector3(x, y, z);
+            Vector3 spawnPos = generateTreeCoords();
             Instantiate(trees[treeIndex], spawnPos, trees[treeIndex].transform.rotation);
         }
 
